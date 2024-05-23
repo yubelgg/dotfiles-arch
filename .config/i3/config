@@ -1,5 +1,5 @@
 set $mod Mod4
-gaps inner 10
+gaps inner 10 
 gaps outer 5
 
 font pango: Hack Nerd Font 10 
@@ -41,14 +41,13 @@ bindsym $mod+shift+x exec betterlockscreen -l dim
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 # Keybinds
 bindsym $mod+Return exec alacritty 
 bindsym $mod+b exec firefox
 bindsym $mod+n exec discord 
 bindsym $mod+m exec spotify
-bindsym $mod+z exec zoom
 bindsym $mod+w exec --no-startup-id feh --recursive --randomize --bg-max ~/Wallpapers
 
 # assign specific workspaces
@@ -56,8 +55,13 @@ for_window [class="firefox"] move to workspace 1
 for_window [class="Alacritty"] move to workspace 3
 for_window [class="discord"] move to workspace 4
 for_window [class="Spotify"] move to workspace 4
-for_window [class="zoom"] move to workspace 6
 for_window [class="code"] move to workspace 7
+
+# assign floating
+for_window [class="feh"] floating enable
+for_window [class="Thunar"] floating enable
+for_window [class="vlc"] floating enable resize set 660 540
+for_window [class="^Pavucontrol$"] floating enable resize set 660 540
 
 # kill focused window
 bindsym $mod+q kill
@@ -85,9 +89,6 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+e layout toggle split
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -160,10 +161,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# target                 title     bg      text     indicator   border
-client.focused           #b4befe   #1e1e2e #cdd6f4  #f5e0dc     #b4befe
-client.focused_inactive  #6c7086   #1e1e2e #cdd6f4  #f5e0dc     #6c7086
-client.unfocused         #6c7086   #1e1e2e #cdd6f4  #f5e0dc     #6c7086
-client.urgent            #fab387   #1e1e2e #fab387  #6c7086     #fab387
-client.placeholder       #6c7086   #1e1e2e #cdd6f4  #6c7086     #6c7086
-client.background        #1e1e2e
+# set primary Rosé Pine colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
+
+# Teming border and Windows --------------
+# target                 title     bg    text   indicator  border
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
+client.background        $base

@@ -27,6 +27,7 @@ fi
 # Alias
 alias vim="nvim"
 alias ll="ls -al"
+alias neofetch="fastfetch"
 alias gst="git status"
 alias gaa="git add ."
 alias gp="git push"
