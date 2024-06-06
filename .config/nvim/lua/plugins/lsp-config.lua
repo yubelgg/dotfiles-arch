@@ -3,7 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup({
-				ensure_installed = { "black", "mypy", "ruff_lsp" },
+				ensure_installed = { "mypy", "ruff_lsp" },
 			})
 		end,
 	},
