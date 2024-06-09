@@ -10,8 +10,8 @@ padding = { x = 20 , y = 20 }
 decorations = "None"
 
 [font]
-normal = { family = "HackNerdFont", style = "Regular" }
-size = 20 
+normal = { family = "HackNerdFont", style = "Bold" }
+size = 20
 
 [colors.primary]
 foreground = "#e0def4"
