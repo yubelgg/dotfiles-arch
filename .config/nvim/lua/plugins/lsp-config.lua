@@ -3,7 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup({
-				ensure_installed = { "mypy", "ruff_lsp" },
+				ensure_installed = { "mypy", "ruff" },
 			})
 		end,
 	},
@@ -21,19 +21,22 @@ return {
 			local float = { focusable = true, style = "minimal", border = "rounded" }
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float)
 			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float)
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({ capabilities = capabilities })
-			lspconfig.tsserver.setup({ capabilities = capabilities })
-			lspconfig.tailwindcss.setup({ capabilities = capabilities })
-			lspconfig.pyright.setup({ capabilities = capabilities, filetypes = { "python" } })
-			lspconfig.clangd.setup({ capabilities = capabilities })
-			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			local on_attach = function(client, bufnr)
+				local opts = { buffer = bufnr, remap = false }
+				vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+			end
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			lspconfig.lua_ls.setup({ on_attach = on_attach, capabilities = capabilities })
+			lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
+			lspconfig.tailwindcss.setup({ on_attach = on_attach, capabilities = capabilities })
+			lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities, filetypes = { "python" } })
+			lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
 		end,
 	},
 }
