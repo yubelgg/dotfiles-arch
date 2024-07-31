@@ -11,7 +11,7 @@ decorations = "None"
 
 [font]
 normal = { family = "HackNerdFont", style = "Regular" }
-size = 22
+size = 19 
 
 [colors.primary]
 foreground = "#e0def4"

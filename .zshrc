@@ -32,6 +32,8 @@ alias gst="git status"
 alias gaa="git add ."
 alias gp="git push"
 alias gcm="git commit -m"
+alias ob="cd ~/Documents/Brain"
+alias vd="cd ~/.config/nvim"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
