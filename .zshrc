@@ -32,8 +32,15 @@ alias gst="git status"
 alias gaa="git add ."
 alias gp="git push"
 alias gcm="git commit -m"
-alias oo="cd ~/Documents/Brain/home"
+alias oo="cd ~/Documents/Brain/zettel"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+go_dir() {
+    cd "$(find ~/Documents/Brain ~/Developer -type d \( -name ".git" -o -name "node_modules" \) -prune -o -type d -print | fzf)"
+    zle accept-line
+}
+zle -N go_dir
+bindkey "^[d" go_dir
