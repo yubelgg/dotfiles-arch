@@ -10,7 +10,7 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/Documents/Brain/zettel",
+				path = "~/personal/notes/zettelkasten",
 			},
 		},
 		mappings = {

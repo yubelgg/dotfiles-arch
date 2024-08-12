@@ -39,7 +39,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 go_dir() {
-    cd "$(find ~/Documents/Brain ~/Developer -type d \( -name ".git" -o -name "node_modules" \) -prune -o -type d -print | fzf)"
+    cd "$(find ~/personal -type d \( -name ".git" -o -name "node_modules" \) -prune -o -type d -print | fzf)"
     zle accept-line
 }
 zle -N go_dir
