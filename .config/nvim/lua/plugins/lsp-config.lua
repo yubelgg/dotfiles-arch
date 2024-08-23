@@ -19,9 +19,7 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 		end
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.lsp.protocol.make_client_capabilities(capabilities)
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		lspconfig.lua_ls.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.tailwindcss.setup({ on_attach = on_attach, capabilities = capabilities })

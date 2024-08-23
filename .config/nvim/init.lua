@@ -14,3 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 require("option")
 require("keymaps")
 require("lazy").setup("plugins")
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = "*.py",
+	command = "silent !black %",
+	group = group,
+})
+
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30

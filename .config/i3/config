@@ -44,18 +44,19 @@ for_window [class="^.*"] border pixel 1
 
 # Keybinds
 bindsym $mod+Return exec alacritty 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec zen-browser
 bindsym $mod+n exec discord 
 bindsym $mod+w exec --no-startup-id feh --recursive --randomize --bg-max ~/Wallpapers
 
 # assign specific workspaces
-for_window [class="firefox"] move to workspace $ws1
+for_window [class="zen-alpha"] move to workspace $ws1
 for_window [class="obsidian"] move to workspace $ws2
 for_window [class="Alacritty"] move to workspace $ws3
 for_window [class="discord"] move to workspace $ws4
 for_window [class="Code"] move to workspace $ws6
 
 # assign floating
+for_window [class="zen-alpha"] fullscreen enable
 for_window [class="Alacritty"] fullscreen enable
 for_window [class="obsidian"] fullscreen enable
 for_window [class="discord"] fullscreen enable
