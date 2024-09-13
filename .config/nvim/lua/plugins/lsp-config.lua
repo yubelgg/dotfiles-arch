@@ -7,7 +7,7 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "tsserver", "pyright", "clangd" },
+			ensure_installed = { "lua_ls", "ts_ls", "pyright", "clangd" },
 		})
 		local lspconfig = require("lspconfig")
 		local on_attach = function(client, bufnr)
@@ -21,10 +21,11 @@ return {
 		end
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		lspconfig.lua_ls.setup({ on_attach = on_attach, capabilities = capabilities })
-		lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
+		lspconfig.ts_ls.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.tailwindcss.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities, filetypes = { "python" } })
 		lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.astro.setup({ on_attach = on_attach, capabilities = capabilities })
+		lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
 	end,
 }

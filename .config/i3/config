@@ -56,7 +56,6 @@ for_window [class="discord"] move to workspace $ws4
 for_window [class="Code"] move to workspace $ws6
 
 # assign floating
-for_window [class="zen-alpha"] fullscreen enable
 for_window [class="Alacritty"] fullscreen enable
 for_window [class="obsidian"] fullscreen enable
 for_window [class="discord"] fullscreen enable
@@ -191,4 +190,5 @@ client.background        $base
 
 bar {
     strip_workspace_numbers yes
+    # status_command i3status
 }

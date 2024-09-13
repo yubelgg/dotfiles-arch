@@ -11,7 +11,7 @@ decorations = "None"
 
 [font]
 normal = { family = "HackNerdFont", style = "Regular" }
-size = 24
+size = 23 
 
 [cursor]
 style = { shape = "Block", blinking = "Never" }
