@@ -25,7 +25,5 @@ return {
 		lspconfig.tailwindcss.setup({ on_attach = on_attach, capabilities = capabilities })
 		lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities, filetypes = { "python" } })
 		lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
-		lspconfig.astro.setup({ on_attach = on_attach, capabilities = capabilities })
-		lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
 	end,
 }

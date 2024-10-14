@@ -14,11 +14,21 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettierd,
 				null_ls.builtins.formatting.clang_format,
-				-- python
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
+				null_ls.builtins.diagnostics.mypy,
+				null_ls.builtins.formatting.prettierd.with({
+					filetypes = {
+						"css",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+						"json",
+						"markdown",
+					},
+				}),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
