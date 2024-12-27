@@ -26,7 +26,7 @@ fi
 
 # Alias
 alias vim="nvim"
-alias ll="ls -al"
+alias ls="ls -al --color"
 alias neofetch="fastfetch"
 alias gst="git status"
 alias gaa="git add ."
@@ -44,3 +44,5 @@ go_dir() {
 }
 zle -N go_dir
 bindkey "^[d" go_dir
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
